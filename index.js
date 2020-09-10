@@ -79,7 +79,30 @@ class Person {
 */
 
 class Car {
+  constructor(model, milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
 
+  fill(gallons){
+    this.tank += gallons;
+  }
+
+  drive(distance){
+    let fuelUsed = distance / this.milesPerGallon;
+    if (this.tank - fuelUsed <= 0){
+      let driven = this.milesPerGallon * this.tank;
+      this.odometer += driven;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    } else {
+      this.tank -= fuelUsed;
+      this.odometer += distance;
+    }
+    
+  }
 }
 
 /*
@@ -95,7 +118,11 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-
+  constructor(attrs){
+    this.name = attrs.name;
+    this.age = attrs.age;
+    this.location = attrs.location;
+  }
 }
 
 /*
