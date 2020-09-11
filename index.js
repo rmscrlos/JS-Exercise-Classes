@@ -229,11 +229,15 @@ class ProjectManager extends Instructor {
   }
 
   standUp(channel){
-    return `${this.name} announces to ${channel}`;
+    return `${this.name} announces to ${channel}, , @channel standy times!`;
   }
 
-  debugsCode(subject){
-    return `${this.name} debugs ${Student.name}'s code on ${subject}`;
+  grade(student, subject){
+    return `${student.name}, ${subject}`;
+  }
+
+  debugsCode(student, subject){
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
   }
 }
 
