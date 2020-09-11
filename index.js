@@ -118,10 +118,10 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-  constructor(attrs){
-    this.name = attrs.name;
-    this.age = attrs.age;
-    this.location = attrs.location;
+  constructor(Attr){
+    this.name = Attr.name;
+    this.age = Attr.age;
+    this.location = Attr.location;
   }
 
   speak(){
@@ -154,9 +154,9 @@ const lambda1 = new Lambdasian({
 class Instructor extends Lambdasian {
   constructor(attrs){
     super(attrs)
-    this.specialty = 'SQL';
-    this.favLanguage = 'C#';
-    this.catchPhrase = `Don't forget the homies`;
+    this.specialty = attrs.specialty;
+    this.favLanguage = attrs.favLanguage;
+    this.catchPhrase = attrs.catchPhrase;
   }
 
   demo(subject){
@@ -184,11 +184,11 @@ class Instructor extends Lambdasian {
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 class Student extends Lambdasian {
-  constructor(attrs){
-    super(attrs)
-    this.previousBackground = 'Plumber';
-    this.className = 'WebEU 3';
-    this.favSubjects = ['JS', 'Node', 'Redux'];
+  constructor(Attr){
+    super(Attr)
+    this.previousBackground = Attr.previousBackground;
+    this.className = Attr.className;
+    this.favSubjects = Attr.favSubjects;
   }
 
   listSubjects(){
@@ -206,6 +206,8 @@ class Student extends Lambdasian {
 
 
 
+
+
 /*
   TASK 6
     - Write a ProjectManager class extending Instructor.
@@ -219,8 +221,20 @@ class Student extends Lambdasian {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
+class ProjectManager extends Instructor {
+  constructor(Attr){
+    super(Attr);
+    this.gradClassName = Attr.gradClassName;
+    this.favInstructor = Attr.favInstructor;
+  }
 
+  standUp(channel){
+    return `${this.name} announces to ${channel}`;
+  }
+
+  debugsCode(subject){
+    return `${this.name} debugs ${Student.name}'s code on ${subject}`;
+  }
 }
 
 /*
